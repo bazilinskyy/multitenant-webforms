@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <script type="text/javascript" src="resources/js/jquery.js" />
+        <SCRIPT language="JavaScript">
+            /* <![CDATA[ */
+
+            $(document).ready(function()
+            {
+                $('#contentMain #box #boxBody').hide();
+                $('#contentMain #box #boxBody').fadeIn(400);
+                //wait a few seconds and close the window
+                setInterval(function() { 
+                    window.close(); 
+                }, 1000); 
+                return false; 
+            });
+            
+            /* ]]> */
+        </SCRIPT>
+
+    </h:head>
+    <h:body>
+
+        <div id="content">
+            <span id="contentMain">
+
+                <div id="box" class="accountBox">
+                    <div id="boxBody">
+                        <div class="alignedCenter">
+                            <h:outputText value="#{ui.successfulEditWebForm}"/>
+                        </div>
+                    </div>
+
+                </div>
+
+            </span>
+
+        </div>
+    </h:body>
+</html>

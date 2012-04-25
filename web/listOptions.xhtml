@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
+    <f:view contentType="text/html" locale="#{sessionBean.language}">
+        <f:event type="preRenderView" listener="#{listOptions.prerender}"/>
+        <h:head>
+            <link rel="stylesheet" type="text/css" href="resources/mhgtheme/style.css"/>
+            <link rel="stylesheet" type="text/css" href="resources/mhgtheme/mhgtheme.css"/>
+            <link rel="shortcut icon" href="resources/mhgtheme/favicon.ico" />
+            <title>#{ui.listOptionsTITLE}</title>
+
+            <script type="text/javascript" src="resources/js/jquery.js" />
+
+            <SCRIPT language="JavaScript">
+                /* <![CDATA[ */
+
+                $(document).ready(function() {
+                    for (var i = 1; i < 40; i++) {
+                        var id = "editForm:editList:" + i + ":editPanel";
+                        $('[id="' + id + '"]').hide();
+                    }
+                    
+                    // Better way, requers reading: http://james.padolsey.com/javascript/regex-selector-for-jquery/
+                    // Currently limited to 20 fields.
+                    // TODO: improve logic using 1 function.
+
+                    var id = "editForm:editList:" + "0" + ":newLabelValuePanel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "1" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "1" + ":newLabelValuePanel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "2" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })  
+                    
+                    var id = "editForm:editList:" + "2" + ":newLabelValuePanel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "3" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "3" + ":newLabelValuePanel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "4" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "4" + ":newLabelValuePanel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "5" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "5" + ":newLabelValuePanel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "6" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "6" + ":newLabelValuePanel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "7" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "7" + ":newLabelValuePanel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "8" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "8" + ":newLabelValuePanel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "9" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "9" + ":newLabelValuePanel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "10" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "10" + ":newLabelValuePanel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "11" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "11" + ":newLabelValuePanel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "12" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "12" + ":newLabelValuePanel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "13" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "13" + ":newLabelValuePanel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "14" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "14" + ":newLabelValuePanel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "15" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "15" + ":newLabelValuePanel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "16" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "16" + ":newLabelValuePanel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "17" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "17" + ":newLabelValuePanel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "18" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "18" + ":newLabelValuePanel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "19" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                                           
+                    return false;
+                });
+                
+                function doPopup(source) {
+                    popup = window.open(source, "popup", "height=460,width=540)");
+                    popup.focus();
+                }
+                
+                function doPopupSmall(source) {
+                    popup = window.open(source, "popup", "height=300,width=275)");
+                    popup.focus();
+                }
+            
+                /* ]]> */
+            </SCRIPT>
+
+        </h:head>
+        <h:body>
+
+            <div id="contentPopupSmall">
+                <span id="contentMainPopupSmall">
+                    <div id="box">
+                        <div id="boxBody">
+                            <h:form class="fillWebFormForm" id="editForm">
+                                <h:panelGrid style="margin-left: 50px; margin-right: auto;"> 
+                                    <f:facet name="header">
+                                        <ui:include src="include/message.xhtml"/>
+                                    </f:facet>
+
+                                    <f:facet name="footer">
+                                        <h:panelGroup>
+                                            <h:commandButton styleClass="buttonSubmit" value="#{ui.submitBUTTON}"
+                                                             action="#{webFormView.editListValues}"
+                                                             id="submitBtn">
+                                            </h:commandButton>
+                                        </h:panelGroup>
+                                    </f:facet>
+
+                                    <!-- list options -->
+
+                                    <h:panelGroup rendered="#{sessionBean.webField.type eq 6 or sessionBean.webField.type eq 7 or sessionBean.webField.type eq 8}">
+                                        <!-- new fields -->
+
+                                        <h:panelGrid columns="3" columnClasses="listOptionEdit1,listOptionEdit2,listOptionEdit3" id="editPanel">
+                                            <h:outputText value="#{ui.position}"/>
+                                            <h:outputText value="#{ui.text}"/>
+                                            <h:outputText value="#{ui.value}"/>
+                                        </h:panelGrid>
+
+                                        <ui:repeat value="#{sessionBean.newListValues}" var="newListValue" id="editList">
+
+                                            <li id="editLi">
+                                                <h:panelGrid columns="4" columnClasses="listOptionEdit1,listOptionEdit2,listOptionEdit3,listOptionEdit4" id="editPanel">
+                                                    <h:panelGroup>
+                                                        <h:inputText id="position" value="#{newListValue.positionInList}"
+                                                                     maxlength="20" size="3"/><br/>
+                                                        <h:outputText value=" "/><h:message for="position" styleClass="formUserError"/>
+                                                    </h:panelGroup>
+
+                                                    <h:panelGroup id="newLabelValuePanel">
+                                                        <h:inputText id="textValue" value="#{newListValue.text}"
+                                                                     maxlength="255" size="20"/><br/>
+                                                        <h:outputText value=" "/><h:message for="textValue" styleClass="formUserError"/>
+                                                    </h:panelGroup>  
+
+                                                    <h:panelGroup>
+                                                        <h:inputText id="valueValue" value="#{newListValue.value}"
+                                                                     maxlength="255" size="20"/><br/>
+                                                        <h:outputText value=" "/><h:message for="valueValue" styleClass="formUserError"/>
+                                                    </h:panelGroup>
+
+                                                    <h:panelGroup>
+                                                        <h:selectBooleanCheckbox id="defaultOptionBox" value="#{newListValue.defaultOption}" />
+                                                    </h:panelGroup>
+
+                                                </h:panelGrid>
+                                            </li>
+
+                                        </ui:repeat>
+                                    </h:panelGroup>
+
+                                </h:panelGrid> 
+                            </h:form>
+                        </div>
+                    </div>
+                </span>
+            </div>
+        </h:body>
+    </f:view>
+</html>
+

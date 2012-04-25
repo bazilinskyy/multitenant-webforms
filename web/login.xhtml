@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <f:view contentType="text/html" locale="#{sessionBean.language}">
+    <f:event type="preRenderView" listener="#{login.prerender}"/>
+    <h:head>
+        <link rel="stylesheet" type="text/css" href="resources/mhgtheme/style.css"/>
+        <link rel="stylesheet" type="text/css" href="resources/mhgtheme/mhgtheme.css"/>
+        <link rel="shortcut icon" href="resources/mhgtheme/favicon.ico" />
+        <title>Multitenant web forms - #{ui.login}</title>
+
+    </h:head>
+
+    <h:body>
+        <div id="content">
+            <ui:include src="include/hmenu.xhtml"/>
+            <span id="contentMain"  class="adminContentMain">
+            <h:form onkeypress="if (event.keyCode == 13) this.submit();">
+                <div id="box" class="loginBox">
+                    <div id="boxHeader"><h:outputText value="#{ui.loginToTheSystem}"/></div>
+                    <div id="loginBoxContent">
+                            <h:panelGrid columns="2" styleClass="loginTable" columnClasses="loginCol1,loginCol2">
+                                <f:facet name="header">
+                                   <ui:include src="include/message.xhtml"/>
+                                </f:facet>
+                                <h:outputLabel id="usernameLbl" value="#{ui.username}"/>
+                                <h:inputText id="username" value="#{login.username}" onkeydown="if (event.keyCode == 13) document.getElementById('buttonSubmit').click()"/>
+
+                                <h:outputLabel id="passwordLbl" value="#{ui.password}"/>
+                                <h:inputSecret id="password" value="#{login.password}"/>
+
+                                <h:outputLabel id="rememberMe" value="#{ui.rememberMe}"/>
+                                <h:selectBooleanCheckbox title="Remember Me" value="#{login.rememberMe}" />
+
+                                <h:outputLabel value=" "/>
+
+                                <h:commandButton styleClass="buttonSubmit" value="#{ui.loginBUTTON}" 
+                                                 action="#{login.loginAction}" id="buttonSubmit" />
+                            </h:panelGrid>
+
+                        <div class="alignedCenter">
+                            <br />
+                            <br />
+                            <h:commandLink value="#{ui.register}" action="#{login.registerAction}"/>
+                        </div>
+                    </div>
+                    </div>
+            </h:form>
+            </span>
+        </div>
+    </h:body>
+
+    </f:view>
+</html>
+

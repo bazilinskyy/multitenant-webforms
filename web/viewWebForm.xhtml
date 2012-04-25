@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:ice="http://www.icesoft.com/icefaces/component">
+    <f:view contentType="text/html" locale="#{sessionBean.language}">
+        <f:event type="preRenderView" listener="#{home.prerender}"/>
+        <h:head>
+            <link rel="stylesheet" type="text/css" href="resources/mhgtheme/style.css"/>
+            <link rel="stylesheet" type="text/css" href="resources/mhgtheme/mhgtheme.css"/>
+            <link rel="shortcut icon" href="resources/mhgtheme/favicon.ico" />
+            <title>Multitenant web forms - #{ui.viewWebFormTITLE}</title>
+
+            <script type="text/javascript" src="resources/js/jquery.js" />
+            <script type="text/javascript" src="resources/js/scripts.js" />
+
+            <c:if test="#{sessionBean.webForm.captcha eq 1}" >
+                <link rel="stylesheet" type="text/css" href="resources/js/jquery.realperson.css"/>
+                <script type="text/javascript" src="resources/js/jquery.realperson.js"></script>
+                <script type="text/javascript">
+                    $(function() {
+                        $('.captcha').realperson();
+                    });
+
+                    function updateCaptchaFromBean() {
+                        $(function() {
+                            $('.captcha').realperson();
+                        });
+                    }
+
+                    function checkCaptcha() {
+                        $(function() {
+                            if ($('.captcha').val() == "") {
+                                return false;
+                            } else return true;
+                        });
+                    }
+                </script>
+            </c:if>
+        </h:head>
+        <h:body>
+
+            <div id="content">
+
+                <ui:include src="include/hmenu.xhtml"/>
+                <ui:include src="include/vertical_menu.xhtml"/>
+                <span id="contentMain">
+                    <div id="box">
+                        <div id="boxHeader">
+                            <h:outputText value="#{ui.viewWebFormTITLE} --- #{ui.ID}: #{sessionBean.webForm.id}"/>
+                        </div>
+                        <div id="boxBody">
+                            <h:form class="fillWebFormForm">
+                                <h:panelGrid> 
+                                    <f:facet name="header">
+                                        <h:outputFormat value="#{ui.fillFieldsBelow}" />
+                                        <ui:include src="include/message.xhtml"/>
+                                    </f:facet>
+
+                                    <ui:repeat value="#{sessionBean.webFieldsInFormForUser}" var="webField">
+
+                                        <li>
+                                            <h:panelGrid columns="2" columnClasses="webFormPanelLeft,webFormPanelRight">
+                                                <!-- label, styling comes from the web field object -->
+                                                <h:outputLabel styleClass="required#{webField.required}" style="color: ##{webField.colour}; font-family: #{webField.labelFont}; font-size: #{webField.labelFontSize}px;" for="webfield#{webField.type}" value="#{webField.label.en}"/>
+
+                                                <!-- type = 1 input field -->
+                                                <h:panelGroup rendered="#{webField.type eq 1}">
+                                                    <h:inputText id="webfield1" value=""
+                                                                 maxlength="#{webField.inputWidth}" size="#{webField.inputSize}"
+                                                                 required="#{webField.required}">
+                                                    </h:inputText>
+                                                    <h:outputText value=" "/><h:message for="webfield" styleClass="formUserError"/>
+                                                </h:panelGroup>
+
+                                                <!-- type = 2 email -->
+                                                <h:panelGroup rendered="#{webField.type eq 2}">
+                                                    <h:inputText id="webfield2" value=""
+                                                                 maxlength="#{webField.inputWidth}" size="#{webField.inputSize}"
+                                                                 required="#{webField.required}">
+                                                        <f:validator validatorId="emailValidator"/>
+                                                    </h:inputText>
+                                                    <h:outputText value=" "/><h:message showSummary="true" for="webfield2" styleClass="formUserError"/>
+                                                </h:panelGroup>
+
+                                                <!-- type = 3 text area -->
+                                                <h:panelGroup rendered="#{webField.type eq 3}">
+                                                    <h:inputTextarea id="webfield3"
+                                                                     cols="#{webField.textareaCol}" rows="#{webField.textareaRow}"
+                                                                     onkeydown="textCounter(this,null, #{webField.inputSize});"
+                                                                     required="#{webField.required}">
+                                                    </h:inputTextarea>
+                                                    <br/><font size="1" face="arial, helvetica, sans-serif"><h:outputText value="#{webField.enterCharacters}."/></font>
+                                                    <br/>
+                                                    <h:outputText value=" "/><h:message for="webfield3" styleClass="formUserError"/>
+                                                </h:panelGroup>
+
+                                                <!-- type = 4 birthday picker -->
+                                                <h:panelGroup rendered="#{webField.type eq 4}">
+                                                    <ice:selectInputDate id="webfield4" renderAsPopup="true" renderMonthAsDropdown="true"
+                                                                         renderYearAsDropdown="true"
+                                                                         validator="birthdayValidator">
+                                                    </ice:selectInputDate>
+                                                    <h:outputText value=" "/><h:message for="webfield4" styleClass="formUserError"/>
+                                                </h:panelGroup>
+
+                                                <!-- type = 5 deadline picker -->
+                                                <h:panelGroup rendered="#{webField.type eq 5}">
+                                                    <ice:selectInputDate id="webfield5" renderAsPopup="true" renderMonthAsDropdown="true"
+                                                                         renderYearAsDropdown="true"
+                                                                         validator="birthdayValidator">
+                                                    </ice:selectInputDate>
+                                                    <h:outputText value=" "/><h:message for="webfield5" styleClass="formUserError"/>
+                                                </h:panelGroup>
+
+                                                <!-- type = 6 select one menu -->
+                                                <h:panelGroup rendered="#{webField.type eq 6}">
+                                                    <h:selectOneMenu id="webfield6" value="">
+                                                        <f:selectItems value="#{webField.listOptions}"/>
+                                                    </h:selectOneMenu>
+                                                    <h:outputText value=" "/><h:message for="webfield6" styleClass="formUserError"/>
+                                                </h:panelGroup>
+
+                                                <!-- type = 7 select one radio button group -->
+                                                <h:panelGroup rendered="#{webField.type eq 7}">
+                                                    <h:selectOneRadio id="webfield7" value="">
+                                                        <f:selectItems value="#{webField.listOptions}"/>
+                                                    </h:selectOneRadio>
+                                                    <h:outputText value=" "/><h:message for="webfield7" styleClass="formUserError"/>
+                                                </h:panelGroup>
+
+                                                <!-- type = 8 select one checkbox group -->
+                                                <h:panelGroup rendered="#{webField.type eq 8}">
+                                                    <h:selectManyCheckbox id="webfield8" value="">
+                                                        <f:selectItems value="#{webField.listOptions}"/>
+                                                    </h:selectManyCheckbox>
+                                                    <h:outputText value=" "/><h:message for="webfield8" styleClass="formUserError"/>
+                                                </h:panelGroup>
+
+                                                <!-- type = 9 checkbox -->
+                                                <h:panelGroup rendered="#{webField.type eq 9}">
+                                                    <h:selectBooleanCheckbox id="webfield9" value="" />
+                                                    <h:outputText value=" "/><h:message for="webfield9" styleClass="formUserError"/>
+                                                </h:panelGroup>
+
+                                            </h:panelGrid>
+                                        </li>
+
+                                    </ui:repeat>
+
+                                    <br /><c:if test="#{sessionBean.webForm.captcha eq 1}" >
+                                        <h:outputLabel for="captcha" value="#{ui.pleaseEnterTextInTheImage}"/>
+                                        <h:panelGroup>
+                                            <h:inputText id="captcha" styleClass="captcha" binding="#{captcha}"
+                                                         validator="#{validationBean.captchaValidator}">
+                                                <f:ajax></f:ajax>
+                                            </h:inputText>
+                                            <h:outputText value=" "/><h:message for="captcha" styleClass="captchaMsg"/>
+                                        </h:panelGroup>
+                                    </c:if>
+
+                                </h:panelGrid> 
+                            </h:form>
+                        </div>
+                    </div>
+                </span>
+            </div>
+        </h:body>
+    </f:view>
+</html>
+

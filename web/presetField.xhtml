@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
+    <f:view contentType="text/html" locale="#{sessionBean.language}">
+        <f:event type="preRenderView" listener="#{presetFieldView.prerender}"/>
+        <h:head>
+            <link rel="stylesheet" type="text/css" href="resources/mhgtheme/style.css"/>
+            <link rel="stylesheet" type="text/css" href="resources/mhgtheme/mhgtheme.css"/>
+            <link rel="shortcut icon" href="resources/mhgtheme/favicon.ico" />
+            <title>#{ui.presetTITLE}</title>
+
+            <script type="text/javascript" src="resources/js/jquery.js" />
+
+        </h:head>
+        <h:body>
+
+            <div id="contentPopupSmall">
+                <span id="contentMainPopupSmall">
+                    <div id="box">
+                        <div id="boxBody">
+                            <h:form class="fillWebFormForm" id="editForm">
+                                <h:panelGrid style="margin-left: 50px; margin-right: auto;"> 
+                                    <f:facet name="header">
+                                        <ui:include src="include/message.xhtml"/>
+                                    </f:facet>
+
+                                    <f:facet name="footer">
+                                        <h:panelGroup>
+                                            <h:commandButton styleClass="buttonSubmit" value="#{ui.submitBUTTON}"
+                                                             action="#{webFormView.choosePreset}"
+                                                             id="submitBtn">
+                                            </h:commandButton>
+                                        </h:panelGroup>
+                                    </f:facet>
+
+                                    <!-- preset field -->
+                                    <h:selectOneMenu id="userRights" value="#{sessionBean.webField.presetFieldId}">
+                                        <f:selectItems value="#{webFormView.presetFieldOptions}"/>
+                                    </h:selectOneMenu>
+
+                                </h:panelGrid> 
+                            </h:form>
+                        </div>
+                    </div>
+                </span>
+            </div>
+        </h:body>
+    </f:view>
+</html>
+

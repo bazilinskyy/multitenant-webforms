@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core" xmlns:ice="http://www.icesoft.com/icefaces/component"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<div class="menu">
+    <span class="menuLeft">
+        <span class="mhgPublicTitle">Multitenant webforms</span>
+    </span>
+    <span class="menuRight">
+        <h:form>
+            <ui:include src="flags.xhtml"/>
+
+            <c:if test="${sessionBean.loggedIn}">
+                <h:panelGroup layout="block" styleClass="button">
+                    <h:commandLink styleClass="linkInTab" value="#{ui.logout}" action="#{hmenu.logout}"/>
+                    <h:panelGroup styleClass="logoutButton">1</h:panelGroup>
+                </h:panelGroup>
+            </c:if>
+
+        </h:form>
+    </span>
+</div>
+    
+</html>

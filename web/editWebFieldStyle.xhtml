@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
+    <f:view contentType="text/html" locale="#{sessionBean.language}">
+        <f:event type="preRenderView" listener="#{editWebFieldStyle.prerender}"/>
+        <h:head>
+            <link rel="stylesheet" type="text/css" href="resources/mhgtheme/style.css"/>
+            <link rel="stylesheet" type="text/css" href="resources/mhgtheme/mhgtheme.css"/>
+            <link rel="shortcut icon" href="resources/mhgtheme/favicon.ico" />
+            <title>#{ui.editWebFieldStyleTITLE}</title>
+        </h:head>
+        <h:body>
+
+            <div id="contentPopup">
+                <span id="contentMainPopup">
+                    <div id="box">
+                        <div id="boxHeader">
+                            <h:outputText value="#{ui.editWebFieldStyleTITLE} --- #{ui.ID}: #{sessionBean.webField.id}"/>
+                        </div>
+                        <div id="boxBody">
+                            <h:form class="fillWebFormForm">
+                                <h:panelGrid> 
+                                    <f:facet name="header">
+                                        <ui:include src="include/message.xhtml"/>
+                                    </f:facet>
+
+                                    <f:facet name="footer">
+                                        <h:panelGroup>
+                                            <h:commandButton styleClass="buttonSubmit" value="#{ui.submitBUTTON}"
+                                                             action="#{webFormView.editWebField}"
+                                                             id="submitBtn">
+                                            </h:commandButton>
+                                        </h:panelGroup>
+                                    </f:facet>
+
+
+                                    <h:panelGrid columns="2" columnClasses="webFieldPanelEdit1,webFieldPanelEdit2">
+
+<!--                                        <h:outputLabel styleClass="" for="labelValue" value="#{ui.label}"/>
+                                        <h:panelGroup>
+                                            <h:inputText id="labelValue" value="#{sessionBean.webField.label.en}" />
+                                            <h:outputText value=" "/><h:message for="labelValue" styleClass="formUserError"/>
+                                        </h:panelGroup>-->
+
+                                        <h:outputLabel styleClass="" for="defaultValue" value="#{ui.defaultValue}"/>
+                                        <h:panelGroup>
+                                            <h:inputText id="defaultValue" value="#{sessionBean.webField.defaultValue}" />
+                                            <h:outputText value=" "/><h:message for="defaultValue" styleClass="formUserError"/>
+                                        </h:panelGroup>
+
+                                        <h:outputLabel styleClass="" for="popupMessage" value="#{ui.popupMessage}"/>
+                                        <h:panelGroup>
+                                            <h:inputText id="popupMessage" value="#{sessionBean.webField.popupMessage}" />
+                                            <h:outputText value=" "/><h:message for="popupMessage" styleClass="formUserError"/>
+                                        </h:panelGroup>
+
+                                        <h:outputLabel styleClass="" for="fontList" value="#{ui.font}"/>
+                                        <h:panelGroup>
+                                            <h:selectOneMenu id="fontList" value="#{sessionBean.webField.labelFont}">
+                                                <f:selectItems value="#{webFormView.labelFontOptions}"/>
+                                            </h:selectOneMenu>
+                                            <h:outputText value=" "/><h:message for="webfield" styleClass="formUserError"/>
+                                        </h:panelGroup>
+
+                                        <h:outputLabel styleClass="" for="fontSize" value="#{ui.fontSize}"/>
+                                        <h:panelGroup>
+                                            <h:panelGrid columns="1" style="margin-bottom:10px">  
+                                                <p:inputText id="fontSize" value="#{sessionBean.webField.labelFontSize}" />  
+                                                <p:slider for="fontSize"/>  
+                                            </h:panelGrid>  
+                                            <h:outputText value=" "/><h:message for="webfield" styleClass="formUserError"/>
+                                        </h:panelGroup>
+
+                                        <h:outputLabel styleClass="" for="fontColour" value="#{ui.fontColour}"/>
+                                        <h:panelGroup>
+                                            <p:colorPicker id="popupCP" value="#{sessionBean.webField.colour}" widgetVar="picker"/>  
+                                            <h:outputText value=" "/><h:message for="webfield" styleClass="formUserError"/>
+                                        </h:panelGroup>
+
+                                        <!-- If not child, edit dimensions of field. Nested panel groups for complex logical checks -->
+                                        <h:panelGroup rendered="#{editWebFieldStyle.childField eq 0}">
+                                            <h:outputLabel styleClass="" for="inputWidth" value="#{ui.inputWidth}" rendered="#{sessionBean.webField.type eq 1 or sessionBean.webField.type eq 2 or sessionBean.webField.type eq 4 or sessionBean.webField.type eq 5}"/>
+                                        </h:panelGroup>
+                                        <h:panelGroup rendered="#{editWebFieldStyle.childField eq 0}">
+                                            <h:panelGroup rendered="#{sessionBean.webField.type eq 1 or sessionBean.webField.type eq 2 or sessionBean.webField.type eq 4 or sessionBean.webField.type eq 5}">
+                                                <h:panelGrid columns="1" style="margin-bottom:10px">  
+                                                    <p:inputText id="inputWidth" value="#{sessionBean.webField.inputWidth}" />  
+                                                    <p:slider for="inputWidth"/>  
+                                                </h:panelGrid>  
+                                                <h:outputText value=" "/><h:message for="webfield" styleClass="formUserError"/>
+                                            </h:panelGroup>
+                                        </h:panelGroup>
+
+                                        <h:panelGroup rendered="#{editWebFieldStyle.childField eq 0}">
+                                            <h:outputLabel styleClass="" for="inputHeight" value="#{ui.inputHeight}" rendered="#{sessionBean.webField.type eq 1 or sessionBean.webField.type eq 2 or sessionBean.webField.type eq 4 or sessionBean.webField.type eq 5}"/>
+                                        </h:panelGroup>
+                                        <h:panelGroup rendered="#{editWebFieldStyle.childField eq 0}">
+                                            <h:panelGroup rendered="#{sessionBean.webField.type eq 1 or sessionBean.webField.type eq 2 or sessionBean.webField.type eq 4 or sessionBean.webField.type eq 5}">
+                                                <h:panelGrid columns="1" style="margin-bottom:10px">  
+                                                    <p:inputText id="inputHeight" value="#{sessionBean.webField.inputHeight}" />  
+                                                    <p:slider for="inputHeight"/>  
+                                                </h:panelGrid>   
+                                                <h:outputText value=" "/><h:message for="inputHeight" styleClass="formUserError"/>
+                                            </h:panelGroup>
+                                        </h:panelGroup>
+
+                                        <h:panelGroup rendered="#{editWebFieldStyle.childField eq 0}">
+                                            <h:outputLabel styleClass="" for="textAreaCols" value="#{ui.textAreaCols}" rendered="#{sessionBean.webField.type eq 3}"/>
+                                        </h:panelGroup>
+                                        <h:panelGroup rendered="#{editWebFieldStyle.childField eq 0}">
+                                            <h:panelGroup rendered="#{sessionBean.webField.type eq 3}">
+                                                <h:panelGrid columns="1" style="margin-bottom:10px">  
+                                                    <p:inputText id="textAreaCols" value="#{sessionBean.webField.textareaCol}" />  
+                                                    <p:slider for="textAreaCols"/>  
+                                                </h:panelGrid>   
+                                                <h:outputText value=" "/><h:message for="textAreaCols" styleClass="formUserError"/>
+                                            </h:panelGroup>
+                                        </h:panelGroup>
+
+                                        <h:panelGroup rendered="#{editWebFieldStyle.childField eq 0}">
+                                            <h:outputLabel styleClass="" for="textAreaRows" value="#{ui.textAreaRows}" rendered="#{sessionBean.webField.type eq 3}"/>
+                                        </h:panelGroup>
+                                        <h:panelGroup rendered="#{editWebFieldStyle.childField eq 0}">
+                                            <h:panelGroup rendered="#{sessionBean.webField.type eq 3}">
+                                                <h:panelGrid columns="1" style="margin-bottom:10px">  
+                                                    <p:inputText id="textAreaRows" value="#{sessionBean.webField.textareaRow}" />  
+                                                    <p:slider for="textAreaRows"/>  
+                                                </h:panelGrid>   
+                                                <h:outputText value=" "/><h:message for="textAreaRows" styleClass="formUserError"/>
+                                            </h:panelGroup>
+                                        </h:panelGroup>
+                                        
+                                    </h:panelGrid>
+
+                                </h:panelGrid> 
+                            </h:form>
+                        </div>
+                    </div>
+                </span>
+            </div>
+        </h:body>
+    </f:view>
+</html>
+

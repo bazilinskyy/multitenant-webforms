@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:ice="http://www.icesoft.com/icefaces/component"
+      xmlns:ace="http://www.icefaces.org/icefaces/components"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <f:view contentType="text/html" locale="#{sessionBean.language}">
+        <f:event type="preRenderView" listener="#{register.prerender}"/>
+
+        <h:head>
+            <link rel="stylesheet" type="text/css" href="resources/mhgtheme/style.css"/>
+            <link rel="stylesheet" type="text/css" href="resources/mhgtheme/mhgtheme.css"/>
+            <link rel="shortcut icon" href="resources/mhgtheme/favicon.ico" />
+            <title>Multitenant web forms - #{ui.registerTITLE}</title>
+
+            <script type="text/javascript" src="resources/js/jquery.js" />
+            <script type="text/javascript" src="resources/js/scripts.js" />
+            <link rel="stylesheet" type="text/css" href="resources/js/jquery.realperson.css"/>
+            <script type="text/javascript" src="resources/js/jquery.realperson.js"></script>
+
+            <script type="text/javascript">
+            $(function() {
+                    $('.captcha').realperson();
+            });
+
+            function updateCaptchaFromBean() {
+                $(function() {
+                    $('.captcha').realperson();
+            });
+            }
+
+            function checkCaptcha() {
+                $(function() {
+                    if ($('.captcha').val() == "") {
+                        return false;
+                    } else return true;
+            });
+            }
+            </script> 
+
+
+        </h:head>
+        <h:body>
+            <div id="content">
+                <ui:include src="include/hmenu.xhtml"/>
+                <span id="contentMain"  class="adminContentMain">
+                    <h:form id="registerForm">
+                        <div id="box" class="registerBox">
+                            <div id="boxHeader"><h:outputText value="#{ui.registerTITLE}"/></div>
+                            <div class="registerBoxContent">
+                                <h:panelGrid columns="2" columnClasses="registerPanelLeft,registerPanelRight">
+
+                                    <f:facet name="header">
+                                        <h:outputFormat value="#{ui.fillFieldsBelow}" />
+                                        <ui:include src="include/message.xhtml"/>
+                                    </f:facet>
+
+                                    <c:if test="#{!sessionBean.loggedIn}" >
+
+                                        <f:facet name="footer">
+                                            <h:panelGroup>
+                                                <h:commandButton styleClass="buttonSubmit" value="#{ui.registerBUTTON}"
+                                                                 action="#{register.addAction}"
+                                                                 onclick="if ($('.captcha').val() == '') return false"
+                                                                 id="submitBtn">
+                                                    <f:param name="captchaGenerated" value="parameterValue1" />
+                                                </h:commandButton>
+                                                <h:commandButton styleClass="buttonSubmit" value="#{ui.reset}" type="reset"/>
+                                                <h:commandButton styleClass="buttonSubmit" value="#{ui.back}" action="login"/>
+                                            </h:panelGroup>
+                                        </f:facet>
+
+                                        <h:panelGroup>
+                                            <h:outputLabel styleClass="required" for="username" value="#{ui.username}"/><br />
+                                            <h:outputText value="#{ui.usernameRequirements}" styleClass="formDescription" />
+                                        </h:panelGroup>
+
+                                        <h:panelGroup>
+                                            <h:inputText id="username" value="#{sessionBean.account.username}"
+                                                         maxlength="15" size="20"
+                                                         required="#{!empty param['registerForm:submitBtn']}"
+                                                         validator="#{validationBean.usernameValidator}"
+                                                         binding="#{register.enteredUsername}" immediate="true">
+                                            </h:inputText>
+                                            <h:outputText value=" "/><h:message for="username" styleClass="formUserError"/><h:outputText value=" "/>
+
+                                            <h:commandButton value="#{ui.checkAvailability}" id="availabilityButton"
+                                                             action="#{register.checkAvailiability}" immediate="true"/>
+                                            <h:outputText value=" "/><h:message for="availabilityButton" styleClass="formUserError"/>
+
+                                        </h:panelGroup>
+
+                                        <h:outputLabel styleClass="required" for="tenant" id="companyLbl" value="#{ui.company}"/>
+                                        <h:selectOneMenu id="tenant" value="#{sessionBean.account.tenantId}">
+                                            <f:selectItems value="#{register.tenantOptions}"/>
+                                        </h:selectOneMenu>
+
+                                        <h:outputLabel styleClass="required" for="firstname" value="#{ui.firstName}"/>
+                                        <h:panelGroup>
+                                            <h:inputText id="firstname" value="#{sessionBean.account.firstname}"
+                                                         maxlength="255" size="20"
+                                                         required="#{!empty param['registerForm:submitBtn']}"
+                                                         validator="#{validationBean.firstNameValidator}">
+
+                                            </h:inputText>
+                                            <h:outputText value=" "/><h:message for="firstname" styleClass="formUserError"/>
+                                        </h:panelGroup>
+
+                                        <h:outputLabel styleClass="required" for="surname" value="#{ui.surname}"/>
+                                        <h:panelGroup>
+                                            <h:inputText id="surname" value="#{sessionBean.account.surname}"
+                                                         maxlength="255" size="20"
+                                                         required="#{!empty param['registerForm:submitBtn']}"
+                                                         validator="#{validationBean.surnameValidator}">
+                                            </h:inputText>
+                                            <h:outputText value=" "/><h:message for="surname" styleClass="formUserError"/>
+                                        </h:panelGroup>
+
+                                        <h:panelGroup>
+                                            <h:outputLabel styleClass="required" for="password1" value="#{ui.password}"/><br />
+                                            <h:outputText value="#{ui.passwordRequirements}" styleClass="formDescription" />
+                                        </h:panelGroup>
+                                        <h:panelGroup>
+                                            <h:inputSecret id="password1" value="#{register.password}"
+                                                           maxlength="15" size="20"
+                                                           required="#{!empty param['registerForm:submitBtn']}"
+                                                           redisplay="true" onkeydown="mirror(this);">
+                                                <f:validateLength minimum="6" maximum="15"/>
+                                            </h:inputSecret>
+                                            <h:outputText value=" "/><h:message for="password1" styleClass="formUserError"/>
+                                        </h:panelGroup>
+
+                                        <h:outputLabel styleClass="required" for="password2" value="#{ui.confirmPassword}"/>
+                                        <h:panelGroup>
+                                            <h:inputSecret id="password2" value="#{register.passwordConfirm}"
+                                                           maxlength="15" size="20"
+                                                           required="#{!empty param['registerForm:submitBtn']}"  redisplay="true">
+                                                <f:validateLength minimum="6" maximum="15"/>
+                                            </h:inputSecret>
+                                            <h:outputText value=" "/><h:message for="password2" styleClass="formUserError"/>
+                                        </h:panelGroup>
+
+                                        <h:outputLabel styleClass="required" for="email" value="#{ui.emailAddress}"/>
+                                        <h:panelGroup>
+                                            <h:inputText value="#{sessionBean.account.email}" id="email"
+                                                         required="#{!empty param['registerForm:submitBtn']}" >
+                                                <f:validator validatorId="emailValidator"/>
+                                            </h:inputText>
+                                            <h:message showSummary="true" showDetail="false"
+                                                       for="email" styleClass="formUserError"/>
+                                        </h:panelGroup>
+
+                                        <h:outputLabel for="captcha" value="#{ui.pleaseEnterTextInTheImage}"  rendered="#{sessionBean.showCaptcha}"/>
+                                        <h:panelGroup rendered="#{sessionBean.showCaptcha}">
+                                            <h:inputText id="captcha" styleClass="captcha" binding="#{captcha}"
+                                                         validator="#{validationBean.captchaValidator}" required="#{!empty param['registerForm:submitBtn']}">
+                                                <f:ajax></f:ajax>
+                                            </h:inputText>
+                                            <h:outputText value=" "/><h:message for="captcha" styleClass="captchaMsg"/>
+                                        </h:panelGroup>
+
+                                    </c:if>
+
+                                </h:panelGrid>
+                            </div>
+                        </div>
+                    </h:form>
+                </span>
+            </div>
+        </h:body>
+    </f:view>
+</html>
+

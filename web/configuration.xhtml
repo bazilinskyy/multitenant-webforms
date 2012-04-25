@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <f:view contentType="text/html" locale="#{sessionBean.language}">
+        <f:event type="preRenderView" listener="#{configuration.prerender}"/>
+
+        <h:head>
+            <link rel="stylesheet" type="text/css" href="resources/mhgtheme/style.css"/>
+            <link rel="stylesheet" type="text/css" href="resources/mhgtheme/mhgtheme.css"/>
+            <link rel="shortcut icon" href="resources/mhgtheme/favicon.ico" />
+            <title>Multitenant web forms - #{ui.configurationTITLE}</title>
+            <script type="text/javascript" src="resources/js/scripts.js" />
+        </h:head>
+        <h:body>
+
+            <div id="content">
+
+                <ui:include src="include/hmenu.xhtml"/>
+                <ui:include src="include/vertical_menu.xhtml"/>
+                <span id="contentMain">
+
+                    <div id="box" class="accountBox">
+                        <div id="boxHeader">
+                            <h:outputText value="#{ui.accountTitle}"/>
+                        </div>
+                        <div id="boxBody">
+                            <h:form id="accountForm">
+                                <h:panelGrid columns="2">
+
+                                    <f:facet name="header">
+                                        <h:outputFormat value="#{ui.fillFieldsBelow}" />
+                                        <ui:include src="include/message.xhtml"/>
+                                    </f:facet>
+
+                                    <f:facet name="footer">
+                                        <h:panelGroup>
+                                            <h:commandButton styleClass="buttonSubmit" value="#{ui.editAccountBUTTON}"
+                                                             action="#{configuration.addAction}" />
+                                            <h:commandButton styleClass="buttonSubmit" value="#{ui.reset}" type="reset"/>
+                                        </h:panelGroup>
+                                    </f:facet>
+
+                                    <h:outputLabel for="numberWebFormsSidebar" id="numberWebFormsSidebarLbl"
+                                                   value="#{ui.numberWebFormsSidebar}"/>
+                                    <h:panelGroup>
+                                        <h:inputText id="numberWebFormsSidebar" value="#{sessionBean.searchTenant.numberWebFormsSidebar}"
+                                                     maxlength="4" size="20"/><br/>
+                                        <h:outputText value=" "/><h:message for="numberWebFormsSidebar" styleClass="formUserError"/>
+                                    </h:panelGroup>
+
+                                    <h:outputLabel for="numberWebFormsPerPage" id="numberWebFormsPerPageLbl"
+                                                   value="#{ui.numberWebFormsPerPage}"/>
+                                    <h:panelGroup>
+                                        <h:inputText id="numberWebFormsPerPage" value="#{sessionBean.searchTenant.numberWebFormsPerPage}"
+                                                     maxlength="4" size="20"/><br/>
+                                        <h:outputText value=" "/><h:message for="numberWebFormsPerPage" styleClass="formUserError"/>
+                                    </h:panelGroup>
+                                    
+                                    <h:outputLabel for="instanceUrl" id="instanceUrlLbl"
+                                                   value="#{ui.instanceUrl}"/>
+                                    <h:panelGroup>
+                                        <h:inputText id="instanceUrl" value="#{sessionBean.searchTenant.instanceUrl}"
+                                                     maxlength="255" size="20"/><br/>
+                                        <h:outputText value=" "/><h:message for="instanceUrl" styleClass="formUserError"/>
+                                    </h:panelGroup>
+                                    
+                                    <h:outputLabel for="apiKey" id="apiKeyLbl"
+                                                   value="#{ui.apiKey}"/>
+                                    <h:panelGroup>
+                                        <h:inputText id="apiKey" value="#{sessionBean.searchTenant.apiKey}"
+                                                     maxlength="255" size="20"/><br/>
+                                        <h:outputText value=" "/><h:message for="instanceUrl" styleClass="formUserError"/>
+                                    </h:panelGroup>
+                                    
+                                </h:panelGrid>
+                            </h:form>
+
+                        </div>
+
+                    </div>
+
+                </span>
+
+            </div>
+        </h:body>
+    </f:view>
+</html>
+

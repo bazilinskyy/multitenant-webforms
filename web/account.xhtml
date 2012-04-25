@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <f:view contentType="text/html" locale="#{sessionBean.language}">
+        <f:event type="preRenderView" listener="#{account.prerender}"/>
+
+        <h:head>
+            <link rel="stylesheet" type="text/css" href="resources/mhgtheme/style.css"/>
+            <link rel="stylesheet" type="text/css" href="resources/mhgtheme/mhgtheme.css"/>
+            <link rel="shortcut icon" href="resources/mhgtheme/favicon.ico" />
+            <title>Multitenant web forms - #{ui.accountTitle}</title>
+            <script type="text/javascript" src="resources/js/scripts.js" />
+        </h:head>
+        <h:body>
+
+            <div id="content">
+
+                <ui:include src="include/hmenu.xhtml"/>
+                <ui:include src="include/vertical_menu.xhtml"/>
+                <span id="contentMain">
+
+                    <div id="box" class="accountBox">
+                        <div id="boxHeader">
+                            <h:outputText value="#{ui.accountTitle}"/>
+                        </div>
+                        <div id="boxBody">
+                            <h:form id="accountForm">
+                                <h:panelGrid columns="2">
+
+                                    <f:facet name="header">
+                                        <h:outputFormat value="#{ui.fillFieldsBelow}" />
+                                        <ui:include src="include/message.xhtml"/>
+                                    </f:facet>
+
+                                    <f:facet name="footer">
+                                        <h:panelGroup>
+                                            <h:commandButton styleClass="buttonSubmit" value="#{ui.editAccountBUTTON}"
+                                                             action="#{account.addAction}" />
+                                            <h:commandButton styleClass="buttonSubmit" value="#{ui.reset}" type="reset"/>
+                                        </h:panelGroup>
+                                    </f:facet>
+
+                                    <h:outputLabel for="username" id="usernameLbl" value="#{ui.username}"/>
+                                    <h:outputText id="username" value="#{sessionBean.searchAccount.username}"/>
+                                    
+                                    <h:outputLabel for="email" id="emailLbl" value="#{ui.emailAddress}"/>
+                                    <h:outputText id="email" value="#{sessionBean.searchAccount.email}"/>
+
+                                    <h:outputLabel for="tenant" id="companyLbl" value="#{ui.company}"/>
+                                    <h:outputText id="tenant" value="#{sessionBean.tenant.name}"/>
+
+                                    <h:outputLabel for="firstname" id="firstnameLbl" value="#{ui.firstName}" styleClass="required"/>
+                                    <h:panelGroup>
+                                        <h:inputText id="firstname" value="#{sessionBean.searchAccount.firstname}"
+                                                     maxlength="255" size="30"/><br/>
+                                        <h:outputText value=" "/><h:message for="firstname" styleClass="formUserError"/>
+                                    </h:panelGroup>
+
+                                    <h:outputLabel for="surname" id="surnameLbl" value="#{ui.surname}" styleClass="required"/>
+                                    <h:panelGroup>
+                                        <h:inputText id="surname" value="#{sessionBean.searchAccount.surname}"
+                                                     maxlength="255" size="30"/><br/>
+                                        <h:outputText value=" "/><h:message for="surname" styleClass="formUserError"/>
+                                    </h:panelGroup>
+
+                                    <h:outputLabel for="passwordOld" id="passwordOldLbl" value="#{ui.oldPassword}"/>
+                                    <h:panelGroup>
+                                        <h:inputSecret id="passwordOld" value="#{account.passwordOld}"
+                                                       maxlength="64" size="20"
+                                                       redisplay="true">
+                                        </h:inputSecret>
+                                        <h:outputText value=" "/><h:message for="passwordOld" styleClass="formUserError"/>
+                                    </h:panelGroup>
+
+                                    <h:outputLabel for="password1" id="password1Lbl" value="#{ui.newPassword}"/>
+                                    <h:panelGroup>
+                                        <h:inputSecret id="password1" value="#{account.password1}"
+                                                       maxlength="64" size="20"
+                                                       redisplay="true" onkeyup="mirror(this);">
+                                        </h:inputSecret>
+                                        <h:outputText value=" "/><h:message for="password1" styleClass="formUserError"/>
+                                    </h:panelGroup>
+
+                                    <h:outputLabel for="password2" id="password2Lbl" value="#{ui.newPasswordAgain}"/>
+                                    <h:panelGroup>
+                                        <h:inputSecret id="password2" value="#{account.password2}"
+                                                       maxlength="64" size="20"
+                                                       redisplay="true">
+                                        </h:inputSecret>
+                                        <h:outputText value=" "/><h:message for="password2" styleClass="formUserError"/>
+                                    </h:panelGroup>
+                                </h:panelGrid>
+                            </h:form>
+
+                        </div>
+
+                    </div>
+
+                </span>
+
+            </div>
+        </h:body>
+    </f:view>
+</html>
+

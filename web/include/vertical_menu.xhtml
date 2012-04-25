@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core" xmlns:ice="http://www.icesoft.com/icefaces/component">
+
+    <span id="verticalMenu">
+        <h:form>
+            <div id="box" class="accountInfo">
+                <div id="boxHeader">
+                    <h:outputText value="#{ui.accountInformationTitle}"/><h:graphicImage value="resources/mhgtheme/img/accountInfo_icon.png" alt="account info"/>
+                </div>
+                <div id="accountInfoText">
+
+                    <p><h:outputText value="#{ui.username}: "/><h:outputText value="#{sessionBean.account.username}" styleClass="accountInfoLine"/></p>
+                    <p><h:outputText value="#{ui.company}: "/><h:outputText value="#{sessionBean.tenant.name}" styleClass="accountInfoLine"/></p>
+                    <p><h:outputText value="#{ui.firstName}: "/><h:outputText value="#{sessionBean.account.firstname}" styleClass="accountInfoLine"/></p>
+                    <p><h:outputText value="#{ui.surname}: "/><h:outputText value="#{sessionBean.account.surname}" styleClass="accountInfoLine"/></p>
+                    <p><h:outputText value="#{ui.emailAddress}: "/><h:outputText value="#{sessionBean.account.email}" styleClass="accountInfoLine"/></p>
+
+                </div>
+                <div id="accountInfoPicture">
+                    <div id="alignedCenter">
+                        <h:commandLink action="home">
+                            <h:graphicImage value="#{sessionBean.account.avatarUrl}" alt="avatar" title="MHG Public"/>
+                        </h:commandLink>
+                    </div>
+                </div>
+            </div>
+            <div id="box">
+                <div id="boxHeader">
+                    <h:outputText value="#{ui.webFormsSidebar}"/>
+                </div>
+
+                <h:panelGroup rendered="#{sessionBean.listShowNewWebForms}">
+
+                    <div class="webFormHeader">
+
+                        <h:graphicImage value="resources/mhgtheme/img/ball_green.png" style="margin-right: 10px;" alt="ball"/>
+                        <h:commandLink  value="#{ui.readyFillIn}" />
+                        <h:graphicImage value="resources/mhgtheme/img/complete_icon.png" alt="Work Order Icon" styleClass="webFormIcon"/>
+
+                    </div>
+
+                    <ol class="vertical_menu_ol">
+                        <ui:repeat value="#{home.newWebFormsSidebar}" var="newWebForm">
+                            <li>
+
+                                <h:commandLink id="editWebForm" action="#{webFormView.parseFillWebForm}" value="#{newWebForm.name} - #{newWebForm.id}" styleClass="boxpopup1">
+                                    <f:param name="idWork" value="#{newWebForm.id}" />
+                                </h:commandLink>
+
+                            </li>
+                        </ui:repeat>
+                    </ol>
+
+                </h:panelGroup>
+                
+<!--                <h:panelGroup rendered="#{sessionBean.listShowConfirmedWebForms}">
+
+                    <div class="webFormHeader">
+
+                        <h:graphicImage value="resources/mhgtheme/img/ball_blue.png" style="margin-right: 10px;" alt="ball"/>
+                        <h:commandLink value="#{ui.confirmed}" />
+                        <h:graphicImage value="resources/mhgtheme/img/confirmed_icon.png" alt="Work Order Icon" styleClass="webFormIcon"/>
+
+                    </div>
+
+                    <ol class="vertical_menu_ol">
+                        <ui:repeat value="#{home.confirmedWebFormsSidebar}" var="confirmedWebForm">
+                            <li>
+
+                                <h:commandLink id="editWebForm" action="#{webFormView.parseViewWebForm}" value="#{confirmedWebForm.name} - #{confirmedWebForm.id}">
+                                    <f:param name="idWork" value="#{confirmedWebForm.id}" />
+                                </h:commandLink>
+
+                            </li>
+                        </ui:repeat>
+                    </ol>
+
+                </h:panelGroup>-->
+
+            </div>
+        </h:form>
+    </span>
+
+
+</html>

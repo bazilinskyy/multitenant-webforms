@@ -1,0 +1,684 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <f:view contentType="text/html" locale="#{sessionBean.language}">
+        <f:event type="preRenderView" listener="#{home.prerender}"/>
+        <h:head>
+            <link rel="stylesheet" type="text/css" href="resources/mhgtheme/style.css"/>
+            <link rel="stylesheet" type="text/css" href="resources/mhgtheme/mhgtheme.css"/>
+            <link rel="shortcut icon" href="resources/mhgtheme/favicon.ico" />
+            <title>Multitenant web forms - #{ui.newWebFormTITLE}</title>
+
+            <script type="text/javascript" src="resources/js/jquery.js" />
+
+            <SCRIPT language="JavaScript">
+                /* <![CDATA[ */
+
+                $(document).ready(function() {
+                    var id = "editForm:editList:0:chooseLabel";
+                    $('[id="' + id + '"]').hide();
+                    
+                    for (var i = 1; i < 40; i++) {
+                        var id = "editForm:editList:" + i + ":editPanel";
+                        $('[id="' + id + '"]').hide();
+                        id = "editForm:editList:" + i + ":chooseLabel";
+                        $('[id="' + id + '"]').hide();
+                    }
+                    
+                    // Better way, requers reading: http://james.padolsey.com/javascript/regex-selector-for-jquery/
+                    // Currently limited to 20 fields.
+                    // TODO: improve logic using 1 function.
+
+                    var id = "editForm:editList:" + "0" + ":webFieldLabel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "1" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "1" + ":webFieldLabel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "2" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })  
+                    
+                    var id = "editForm:editList:" + "2" + ":webFieldLabel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "3" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "3" + ":webFieldLabel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "4" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "4" + ":webFieldLabel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "5" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "5" + ":webFieldLabel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "6" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "6" + ":webFieldLabel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "7" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "7" + ":webFieldLabel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "8" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "8" + ":webFieldLabel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "9" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "9" + ":webFieldLabel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "10" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "10" + ":webFieldLabel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "11" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "11" + ":webFieldLabel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "12" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "12" + ":webFieldLabel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "13" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "13" + ":webFieldLabel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "14" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "14" + ":webFieldLabel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "15" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "15" + ":webFieldLabel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "16" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "16" + ":webFieldLabel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "17" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "17" + ":webFieldLabel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "18" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "18" + ":webFieldLabel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "19" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "19" + ":webFieldLabel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "20" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "20" + ":webFieldLabel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "21" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })  
+                    
+                    var id = "editForm:editList:" + "21" + ":webFieldLabel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "22" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "22" + ":webFieldLabel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "23" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "23" + ":webFieldLabel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "24" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "24" + ":webFieldLabel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "25" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "25" + ":webFieldLabel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "26" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "26" + ":webFieldLabel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "27" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "27" + ":webFieldLabel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "28" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "28" + ":webFieldLabel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "29" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "29" + ":webFieldLabel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "30" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "30" + ":webFieldLabel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "31" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "31" + ":webFieldLabel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "32" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "32" + ":webFieldLabel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "33" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "33" + ":webFieldLabel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "34" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "34" + ":webFieldLabel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "35" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "35" + ":webFieldLabel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "36" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "36" + ":webFieldLabel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "37" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "37" + ":webFieldLabel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "38" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "38" + ":webFieldLabel";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "39" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "0" + ":chooseLabelLink";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "0" + ":chooseLabel";
+                        $('[id="' + id + '"]').show(500);
+                        id = "editForm:editList:" + "1" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "1" + ":chooseLabelLink";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "1" + ":chooseLabel";
+                        $('[id="' + id + '"]').show(500);
+                        id = "editForm:editList:" + "2" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })  
+                    
+                    var id = "editForm:editList:" + "2" + ":chooseLabelLink";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "2" + ":chooseLabel";
+                        $('[id="' + id + '"]').show(500);
+                        id = "editForm:editList:" + "3" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "3" + ":chooseLabelLink";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "3" + ":chooseLabel";
+                        $('[id="' + id + '"]').show(500);
+                        id = "editForm:editList:" + "4" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "4" + ":chooseLabelLink";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "4" + ":chooseLabel";
+                        $('[id="' + id + '"]').show(500);
+                        id = "editForm:editList:" + "5" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "5" + ":chooseLabelLink";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "5" + ":chooseLabel";
+                        $('[id="' + id + '"]').show(500);
+                        id = "editForm:editList:" + "6" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "6" + ":chooseLabelLink";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "6" + ":chooseLabel";
+                        $('[id="' + id + '"]').show(500);
+                        id = "editForm:editList:" + "7" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "7" + ":chooseLabelLink";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "7" + ":chooseLabel";
+                        $('[id="' + id + '"]').show(500);
+                        id = "editForm:editList:" + "8" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "8" + ":chooseLabelLink";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "8" + ":chooseLabel";
+                        $('[id="' + id + '"]').show(500);
+                        id = "editForm:editList:" + "9" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "9" + ":chooseLabelLink";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "9" + ":chooseLabel";
+                        $('[id="' + id + '"]').show(500);
+                        id = "editForm:editList:" + "10" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "10" + ":chooseLabelLink";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "10" + ":chooseLabel";
+                        $('[id="' + id + '"]').show(500);
+                        id = "editForm:editList:" + "11" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "11" + ":chooseLabelLink";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "11" + ":chooseLabel";
+                        $('[id="' + id + '"]').show(500);
+                        var id = "editForm:editList:" + "12" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "12" + ":chooseLabelLink";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "12" + ":chooseLabel";
+                        $('[id="' + id + '"]').show(500);
+                        var id = "editForm:editList:" + "13" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "13" + ":chooseLabelLink";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "13" + ":chooseLabel";
+                        $('[id="' + id + '"]').show(500);
+                        var id = "editForm:editList:" + "14" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "14" + ":chooseLabelLink";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "14" + ":chooseLabel";
+                        $('[id="' + id + '"]').show(500);
+                        var id = "editForm:editList:" + "15" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "15" + ":chooseLabelLink";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "15" + ":chooseLabel";
+                        $('[id="' + id + '"]').show(500);
+                        var id = "editForm:editList:" + "16" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "16" + ":chooseLabelLink";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "16" + ":chooseLabel";
+                        $('[id="' + id + '"]').show(500);
+                        var id = "editForm:editList:" + "17" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "17" + ":chooseLabelLink";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "17" + ":chooseLabel";
+                        $('[id="' + id + '"]').show(500);
+                        var id = "editForm:editList:" + "18" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "18" + ":chooseLabelLink";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "18" + ":chooseLabel";
+                        $('[id="' + id + '"]').show(500);
+                        var id = "editForm:editList:" + "19" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "19" + ":chooseLabelLink";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "19" + ":chooseLabel";
+                        $('[id="' + id + '"]').show(500);
+                        var id = "editForm:editList:" + "20" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "20" + ":chooseLabelLink";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "20" + ":chooseLabel";
+                        $('[id="' + id + '"]').show(500);
+                        var id = "editForm:editList:" + "21" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })  
+                    
+                    var id = "editForm:editList:" + "21" + ":chooseLabelLink";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "21" + ":chooseLabel";
+                        $('[id="' + id + '"]').show(500);
+                        var id = "editForm:editList:" + "22" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "22" + ":chooseLabelLink";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "22" + ":chooseLabel";
+                        $('[id="' + id + '"]').show(500);
+                        var id = "editForm:editList:" + "23" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "23" + ":chooseLabelLink";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "23" + ":chooseLabel";
+                        $('[id="' + id + '"]').show(500);
+                        var id = "editForm:editList:" + "24" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "24" + ":chooseLabelLink";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "24" + ":chooseLabel";
+                        $('[id="' + id + '"]').show(500);
+                        var id = "editForm:editList:" + "25" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "25" + ":chooseLabelLink";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "25" + ":chooseLabel";
+                        $('[id="' + id + '"]').show(500);
+                        var id = "editForm:editList:" + "26" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "26" + ":chooseLabelLink";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "26" + ":chooseLabel";
+                        $('[id="' + id + '"]').show(500);
+                        var id = "editForm:editList:" + "27" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "27" + ":chooseLabelLink";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "27" + ":chooseLabel";
+                        $('[id="' + id + '"]').show(500);
+                        var id = "editForm:editList:" + "28" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "28" + ":chooseLabelLink";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "28" + ":chooseLabel";
+                        $('[id="' + id + '"]').show(500);
+                        var id = "editForm:editList:" + "29" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "29" + ":chooseLabelLink";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "29" + ":chooseLabel";
+                        $('[id="' + id + '"]').show(500);
+                        var id = "editForm:editList:" + "30" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "30" + ":chooseLabelLink";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "30" + ":chooseLabel";
+                        $('[id="' + id + '"]').show(500);
+                        var id = "editForm:editList:" + "31" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "31" + ":chooseLabelLink";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "31" + ":chooseLabel";
+                        $('[id="' + id + '"]').show(500);
+                        var id = "editForm:editList:" + "32" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "32" + ":chooseLabelLink";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "32" + ":chooseLabel";
+                        $('[id="' + id + '"]').show(500);
+                        var id = "editForm:editList:" + "33" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "33" + ":chooseLabelLink";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "33" + ":chooseLabel";
+                        $('[id="' + id + '"]').show(500);
+                        var id = "editForm:editList:" + "34" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "34" + ":chooseLabelLink";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "34" + ":chooseLabel";
+                        $('[id="' + id + '"]').show(500);
+                        var id = "editForm:editList:" + "35" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "35" + ":chooseLabelLink";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "35" + ":chooseLabel";
+                        $('[id="' + id + '"]').show(500);
+                        var id = "editForm:editList:" + "36" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "36" + ":chooseLabelLink";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "36" + ":chooseLabel";
+                        $('[id="' + id + '"]').show(500);
+                        var id = "editForm:editList:" + "37" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "37" + ":chooseLabelLink";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "37" + ":chooseLabel";
+                        $('[id="' + id + '"]').show(500);
+                        var id = "editForm:editList:" + "38" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                    
+                    var id = "editForm:editList:" + "38" + ":chooseLabelLink";
+                    $('[id="' + id + '"]').click(function(){
+                        var id = "editForm:editList:" + "38" + ":chooseLabel";
+                        $('[id="' + id + '"]').show(500);
+                        var id = "editForm:editList:" + "39" + ":editPanel";
+                        $('[id="' + id + '"]').show(500);
+                    })
+                                           
+                    return false;
+                });
+                
+                function doPopupSmall(source) {
+                    popup = window.open(source, "popup", "height=300,width=275)");
+                    popup.focus();
+                }
+                
+            
+                /* ]]> */
+            </SCRIPT>
+
+        </h:head>
+        <h:body>
+
+            <div id="content">
+                <ui:include src="include/hmenu.xhtml"/>
+                <ui:include src="include/vertical_menu.xhtml"/>
+                <span id="contentMain">
+                    <div id="box">
+                        <div id="boxHeader">
+                            <h:outputText value="#{ui.newWebFormTITLE}"/>
+                        </div>
+                        <div id="boxBody">
+                            <h:form class="fillWebFormForm" id="editForm">
+                                <h:panelGrid> 
+                                    <f:facet name="header">
+                                        <ui:include src="include/message.xhtml"/>
+                                    </f:facet>
+
+                                    <f:facet name="footer">
+                                        <h:panelGroup>
+                                            <h:commandButton styleClass="buttonSubmit" value="#{ui.submitBUTTON}"
+                                                             action="#{webFormView.newWebForm}"
+                                                             id="submitBtn">
+                                                <f:param name="captchaGenerated" value="parameterValue1" />
+                                            </h:commandButton>
+                                            <h:commandButton styleClass="buttonSubmit" value="#{ui.reset}" type="reset"/>
+                                            <h:commandButton styleClass="buttonSubmit" value="#{ui.back}" action="login"/>
+                                        </h:panelGroup>
+                                    </f:facet>
+
+                                    <h:panelGrid columns="2" columnClasses="webFormPanelEdit1,webFormPanelEdit2">
+                                        <h:outputLabel for="formName" id="formNameLbl" value="#{ui.formName}" styleClass="required"/>
+                                        <h:panelGroup>
+                                            <h:inputText id="formName" value="#{sessionBean.webForm.name}"
+                                                         maxlength="255" size="20"/><br/>
+                                            <h:outputText value=" "/><h:message for="formName" styleClass="formUserError"/>
+                                        </h:panelGroup>
+                                    </h:panelGrid>
+
+                                    <ui:repeat value="#{sessionBean.newWebFieldsInForm}" var="newWebField" id="editList">
+
+                                        <li id="editLi">
+                                            <h:panelGrid columns="5" columnClasses="webFormPanelEdit1,webFormPanelEdit2,webFormPanelEdit3,webFormPanelEdit4" id="editPanel">
+                                                <h:panelGroup id="newWebFieldPanel">
+                                                    <h:inputText id="webFieldLabel" value="#{newWebField.label.en}"
+                                                                 maxlength="255" size="20"/>
+                                                    
+                                                    <h:graphicImage value="resources/mhgtheme/css-images/Tab_MidMid_bullet.gif" 
+                                                                    id="chooseLabelLink" alt="Next" title="Next" class="chooseLabelLink"/>
+                                                    <h:selectOneMenu id="chooseLabel" value="#{newWebField.labelId}" >
+                                                        <f:selectItems value="#{webFormView.labelOptions}"/>
+                                                    </h:selectOneMenu>
+                                                    <br/>
+
+                                                    <h:outputText value=" "/><h:message for="webFieldLabel" styleClass="formUserError"/>
+                                                </h:panelGroup> 
+
+                                                <h:panelGroup>
+                                                    <h:selectOneMenu id="webfieldType" value="#{newWebField.type}">
+                                                        <f:selectItems value="#{webFormView.typeOptions}"/>
+                                                    </h:selectOneMenu>
+                                                </h:panelGroup>
+
+                                                <h:panelGroup>
+                                                    <h:selectOneMenu id="webfieldRequired" value="#{newWebField.required}">
+                                                        <f:selectItems value="#{webFormView.requiredOptions}"/>
+                                                    </h:selectOneMenu>
+                                                </h:panelGroup>
+
+                                                <h:panelGroup>
+                                                    <h:inputText id="webfieldPosition" value="#{newWebField.positionInWebform}"
+                                                                 maxlength="10" size="2"/><br/>
+                                                    <h:outputText value=" "/><h:message for="webFieldLabel" styleClass="formUserError"/>
+                                                </h:panelGroup>
+
+                                                <h:outputText value=" "/><h:message for="webfield" styleClass="formUserError"/>
+
+                                            </h:panelGrid>
+                                        </li>
+
+                                    </ui:repeat>
+
+                                </h:panelGrid> 
+                            </h:form>
+                        </div>
+                    </div>
+                </span>
+            </div>
+        </h:body>
+    </f:view>
+</html>
+

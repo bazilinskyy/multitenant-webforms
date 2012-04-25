@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <f:view contentType="text/html" locale="#{sessionBean.language}">
+        <f:event type="preRenderView" listener="#{confirmation.prerender}"/>
+
+        <h:head>
+            <link rel="stylesheet" type="text/css" href="resources/mhgtheme/style.css"/>
+            <link rel="stylesheet" type="text/css" href="resources/mhgtheme/mhgtheme.css"/>
+            <link rel="shortcut icon" href="resources/mhgtheme/favicon.ico" />
+            <title>MHG Public - #{ui.confirmationTITLE}</title>
+
+            <script type="text/javascript" src="resources/js/jquery.js" />
+
+            <SCRIPT language="JavaScript">
+            /* <![CDATA[ */
+
+                $(document).ready(function() {
+                    $('#contentMain #box #boxBody').hide();
+                    $('#contentMain #box #boxBody').fadeIn(1000);
+
+                    return false;
+                });
+            
+            /* ]]> */
+            </SCRIPT>
+
+        </h:head>
+        <h:body>
+
+            <div id="content">
+
+                <ui:include src="include/hmenu.xhtml"/>
+                <ui:include src="include/vertical_menu.xhtml"/>
+                <span id="contentMain">
+
+                    <div id="box" class="accountBox">
+                        <div id="boxHeader">
+                            <h:outputText value="#{ui.confirmationTITLE}"/>
+                        </div>
+                        <div id="boxBody">
+                            <h:form>
+
+                                <c:if test="#{sessionBean.confirmationEditAccount}">
+                                    <div class="alignedCenter">
+                                        <h:outputText value="#{ui.successfulEditAccount}"/>
+                                    </div>
+                                </c:if>
+
+                                <c:if test="#{sessionBean.confirmationEditWebForm}">
+                                    <div class="alignedCenter">
+                                        <h:outputText value="#{ui.successfulEditWebForm}"/>
+                                    </div>
+                                </c:if>
+
+                                <c:if test="#{sessionBean.confirmationNewWebForm}">
+                                    <div class="alignedCenter">
+                                        <h:outputText value="#{ui.successfulNewWebForm}"/>
+                                    </div>
+                                </c:if>
+                                
+                                <c:if test="#{sessionBean.confirmationFormDeleted}">
+                                    <div class="alignedCenter">
+                                        <h:outputText value="#{ui.successDeleteForm}"/>
+                                    </div>
+                                </c:if>
+                                
+                                <c:if test="#{sessionBean.confirmationFormEdited}">
+                                    <div class="alignedCenter">
+                                        <h:outputText value="#{ui.successEditForm}"/>
+                                    </div>
+                                </c:if>
+                                
+                                <c:if test="#{sessionBean.confirmationConfiguration}">
+                                    <div class="alignedCenter">
+                                        <h:outputText value="#{ui.successfulConfiguration}"/>
+                                    </div>
+                                </c:if>
+                                
+
+                                <c:if test="#{sessionBean.showConfirmationImage}">
+                                    <div class="alignedCenter" style="margin-top: 20px">
+                                        <h:graphicImage value="resources/mhgtheme/img/success.png"/>
+                                    </div>
+                                </c:if>
+
+                            </h:form>
+                        </div>
+
+                    </div>
+
+                </span>
+
+            </div>
+        </h:body>
+    </f:view>
+</html>
+
