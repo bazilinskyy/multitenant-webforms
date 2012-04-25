@@ -7,4 +7,4 @@ The aim of the study is to investigate means of creating a fully-functioning and
 
 A part of the study that focuses on development of the test case application is present in the study. Difficulties and issues that are faced while working multitenant cloud-enabled applications are outlined. Listings of programming code are given as examples where they are essential for understanding of the technical aspects of the research. Additionally, different stages of testing are described to outline strengths and weaknesses of the final product.
 
-![booyah](https://github.com/Hollgam/Multitenant_webforms/blob/master/viewEditForms.png)
+![booyah](https://github.com/Hollgam/Multitenant_webforms/raw/master/viewEditForms.png)
